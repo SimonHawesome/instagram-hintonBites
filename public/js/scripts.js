@@ -4,7 +4,7 @@
 
 function initialize() {
   var mapOptions = {
-    zoom: 16,
+    zoom: 5,
     center: new google.maps.LatLng(45.406508, -75.723342)
   }
   var map = new google.maps.Map(document.getElementById('map-canvas'),
@@ -56,11 +56,11 @@ function initialize() {
  * other.
  */
 var pictures = [
-  ['Suzy Q', 45.405538, -75.723478, 17],
-  ['Café My House', 45.404999, -75.723775, 17],
-  ['The Hintonburg Public House', 45.404695, -75.723598, 17],
-  ['Back Lane Café', 45.403121, -75.725506, 17],
-  ['Burnt Butter Italian Kitchen', 45.402669, -75.725734, 17]
+  //['Suzy Q', 45.405538, -75.723478, 17],
+  //['Café My House', 45.404999, -75.723775, 17],
+  //['The Hintonburg Public House', 45.404695, -75.723598, 17],
+  //['Back Lane Café', 45.403121, -75.725506, 17],
+  //['Burnt Butter Italian Kitchen', 45.402669, -75.725734, 17]
 ];
 
 function setMarkers(map, locations) {
@@ -103,6 +103,6 @@ function setMarkers(map, locations) {
         zIndex: beach[3]
     });
   }
-}
+};
 
-google.maps.event.addDomListener(window, 'load', initialize)
+google.maps.event.addDomListener(window, 'load', initialize);

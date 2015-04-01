@@ -32,12 +32,12 @@ Instagram.set('maxSockets', 10);
 
 /**
  * Uses the library "instagram-node-lib" to Subscribe to the Instagram API Real Time
- * with the tag "hashtag" hintonbites
+ * with the tag "hashtag" tbt
  * @type {String}
  */
 Instagram.subscriptions.subscribe({
   object: 'tag',
-  object_id: 'hintonbites',
+  object_id: 'tbt',
   aspect: 'media',
   callback_url: 'http://192.168.2.147:5000/callback',
   type: 'subscription',
@@ -46,12 +46,12 @@ Instagram.subscriptions.subscribe({
 
 /**
  * Uses the library "instagram-node-lib" to Subscribe to the Instagram API Real Time
- * with the tag "hashtag" hintonbites
+ * with the tag "hashtag" tbt
  * @type {String}
  */
 Instagram.subscriptions.subscribe({
   object: 'tag',
-  object_id: 'hintonbites',
+  object_id: 'tbt',
   aspect: 'media',
   callback_url: 'http://192.168.2.147:5000/callback',
   type: 'subscription',
@@ -65,7 +65,7 @@ Instagram.subscriptions.subscribe({
  */
 Instagram.subscriptions.subscribe({
   object: 'tag',
-  object_id: 'hBites',
+  object_id: 'tbt',
   aspect: 'media',
   callback_url: 'http://192.168.2.147:5000/callback',
   type: 'subscription',
@@ -116,7 +116,7 @@ app.get("/views", function(req, res){
  */
 io.sockets.on('connection', function (socket) {
   Instagram.tags.recent({
-      name: 'hintonbites',
+      name: 'tbt',
       complete: function(data) {
         socket.emit('firstShow', { firstShow: data });
       }

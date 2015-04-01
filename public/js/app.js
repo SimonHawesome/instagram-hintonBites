@@ -8,6 +8,8 @@
 
 
     var pictures = [];
+
+    var markers = [];
     
     Insta.App = {
 
@@ -45,6 +47,9 @@
         getData: function() {
             var self = this;
             socket.on('show', function(data) {
+
+                console.log("hello");
+
                 var url = data.show;
                 $.ajax({
                     url: url,
@@ -116,22 +121,17 @@
                 //loop through all instances with hashtag
                 for (v=0; v < data.firstShow.length; v ++){
 
-                    console.log(data.firstShow[v].user.username);
-                    console.log(data.firstShow[v].location.latitude);
-                    console.log(data.firstShow[v].location.longitude);
-
-                    var img = data.firstShow[v].images.thumbnail.url;
-                    var lat = data.firstShow[v].location.latitude;
-                    var long = data.firstShow[v].location.longitude;
-
-                    pictures.push([img, lat, long, 17]);
-
+                    if(data.firstShow[v].location != null) {
+                        var img = data.firstShow[v].images.thumbnail.url;
+                        var lat = data.firstShow[v].location.latitude;
+                        var long = data.firstShow[v].location.longitude;
+                        var user = data.firstShow[v].user.username;
+                        pictures.push([img, lat, long, 17, user]);
+                    };
 
                 }
-                console.log(pictures);
+
                 initialize();
-
-
 
             });
         }
@@ -146,7 +146,7 @@
 
     function initialize() {
         var mapOptions = {
-            zoom: 16,
+            zoom: 2,
             center: new google.maps.LatLng(45.406508, -75.723342)
         }
         var map = new google.maps.Map(document.getElementById('map-canvas'),
@@ -227,7 +227,15 @@
             coords: [1, 1, 1, 20, 18, 20, 18 , 1],
             type: 'poly'
         };
-        var markers = [];
+
+
+        var infowindow = new google.maps.InfoWindow();
+
+        google.maps.event.addListener(map, 'click', function() {
+            infowindow.close();
+        });
+
+
 
         var contentString = [];
         for (var i = 0; i < locations.length; i++) {
@@ -241,26 +249,43 @@
                 title: beach[0],
                 zIndex: beach[3]
             });
+
+
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+
+                return function() {
+
+                    var mystring = '<div id="content">'+
+                        '<img src="' + locations[i][0] + '"></>'+
+                        '<p>' + locations[i][4] + '</p>'+
+                        '</div>'+
+                        '</div>';
+                    infowindow.setContent(mystring);
+                    infowindow.open(map, marker);
+
+                }
+
+            })(marker, i));
+
             markers.push(marker);
 
-            var string = '<div id="content">'+
-                '<img src="' + locations[i][0] + '"></>'+
-                '<p>@ Author</p>'+
-                '</div>'+
-                '</div>';
 
-             contentString.push([string]);
 
-            google.maps.event.addListener(marker, 'click', function(){
-                infowindow.open(map, this);
-            });
+             //contentString.push([string]);
+
+            //google.maps.event.addListener(marker, 'click', function(){
+            //    infowindow.open(map, this);
+            //});
+            //
+            console.log(markers[i]);
         }
 
 
-        var infowindow = new google.maps.InfoWindow({
-            content: contentString[1][0],
-            maxWidth: 200
-        });
+
+        //var infowindow = new google.maps.InfoWindow({
+        //    content: contentString[markers][0],
+        //    maxWidth: 200
+        //});
 
         var markerCluster = new MarkerClusterer(map, markers);
     }
