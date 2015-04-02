@@ -26,8 +26,8 @@ var clientID = '05aef9ddc98b446ab9b6c0c763afb66b',
  */
 Instagram.set('client_id', clientID);
 Instagram.set('client_secret', clientSecret);
-Instagram.set('callback_url', 'http://192.168.2.147:5000/callback');
-Instagram.set('redirect_uri', 'http://192.168.2.147:5000/');
+Instagram.set('callback_url', 'https://fierce-scrubland-7769.herokuapp.com//callback');
+Instagram.set('redirect_uri', 'https://fierce-scrubland-7769.herokuapp.com//');
 Instagram.set('maxSockets', 10);
 
 /**
@@ -39,7 +39,7 @@ Instagram.subscriptions.subscribe({
   object: 'tag',
   object_id: 'ottawa',
   aspect: 'media',
-  callback_url: 'http://192.168.2.147:5000/callback',
+  callback_url: 'https://fierce-scrubland-7769.herokuapp.com//callback',
   type: 'subscription',
   id: '#'
 });
@@ -53,7 +53,7 @@ Instagram.subscriptions.subscribe({
   object: 'tag',
   object_id: 'ottawa',
   aspect: 'media',
-  callback_url: 'http://192.168.2.147:5000/callback',
+  callback_url: 'https://fierce-scrubland-7769.herokuapp.com//callback',
   type: 'subscription',
   id: '#'
 });
@@ -67,7 +67,7 @@ Instagram.subscriptions.subscribe({
   object: 'tag',
   object_id: 'ottawa',
   aspect: 'media',
-  callback_url: 'http://192.168.2.147:5000/callback',
+  callback_url: 'https://fierce-scrubland-7769.herokuapp.com//callback',
   type: 'subscription',
   id: '#'
 });

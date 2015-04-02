@@ -1,5 +1,5 @@
 (function() {
-    var socket = io.connect('http://192.168.2.147:5000');
+    var socket = io.connect('https://fierce-scrubland-7769.herokuapp.com/');
 
     /**
      * [Namespacing]
