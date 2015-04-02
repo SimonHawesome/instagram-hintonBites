@@ -146,8 +146,8 @@
 
     function initialize() {
         var mapOptions = {
-            zoom: 2,
-            center: new google.maps.LatLng(45.406508, -75.723342)
+            zoom: 17,
+            center: new google.maps.LatLng(45.420779,-75.688366)
         }
         var map = new google.maps.Map(document.getElementById('map-canvas'),
             mapOptions);
